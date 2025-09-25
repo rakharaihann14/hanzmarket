@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HanzMarket - Paket Netflix & CapCut Pro</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+        }
+        .netflix-gradient {
+            background: linear-gradient(135deg, #e50914 0%, #b81d24 100%);
+        }
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .device-rule {
+            border-left: 4px solid #a777e3;
+        }
+        .netflix-device-rule {
+            border-left: 4px solid #e50914;
+        }
+        .feature-icon {
+            background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+        }
+        .netflix-feature-icon {
+            background: linear-gradient(135deg, #e50914 0%, #b81d24 100%);
+        }
+        
+        /* Enhanced Navbar Styles */
+        .navbar-gradient {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.98) 100%);
+            backdrop-filter: blur(10px);
+        }
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #a777e3, #6e8efb);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(110, 142, 251, 0.4);
+        }
+        .mobile-menu {
+            animation: slideDown 0.3s ease-out;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e53e3e;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Enhanced Navbar -->
+     <nav class="navbar-gradient shadow-lg sticky top-0 z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3">
+                <!-- Logo Section -->
+                <div class="flex items-center space-x-3">
+                    <a href="#" class="flex items-center space-x-2 group">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-md">
+                            <span class="text-white font-bold text-lg">H</span>
+                        </div>
+                        <div>
+                            <span class="text-2xl font-bold text-gray-800 group-hover:text-purple-600 transition">HanzMarket</span>
+                            <span class="text-xs bg-gradient-to-r from-purple-100 to-blue-100 text-purple-800 px-2 py-1 rounded-full ml-2 font-medium">PRO</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation - Center Position -->
+                <div class="hidden lg:flex items-center space-x-1 flex-1 justify-center">
+                    <a href="#netflix" class="nav-link text-gray-700 hover:text-purple-600 font-medium px-4 py-2 flex items-center">
+                        <i class="fas fa-tv mr-2 text-red-500"></i>
+                        Netflix
+                    </a>
+                    <a href="#capcut" class="nav-link text-gray-700 hover:text-purple-600 font-medium px-4 py-2 flex items-center">
+                        <i class="fas fa-video mr-2 text-purple-500"></i>
+                        CapCut
+                    </a>
+                    <a href="#features" class="nav-link text-gray-700 hover:text-purple-600 font-medium px-4 py-2">Fitur</a>
+                    <a href="#pricing" class="nav-link text-gray-700 hover:text-purple-600 font-medium px-4 py-2">Harga</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-purple-600 font-medium px-4 py-2">Testimoni</a>
+                    <a href="#faq" class="nav-link text-gray-700 hover:text-purple-600 font-medium px-4 py-2">FAQ</a>
+                </div>
+
+                <!-- Right Section - Desktop - Only CTA Button -->
+                <div class="hidden lg:flex items-center">
+                    <!-- CTA Button -->
+                    <a href="https://wa.me/6281906348152" class="cta-button text-white font-semibold px-5 py-2.5 rounded-full flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i>Pesan Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    <a href="https://wa.me/6281906348152" class="cta-button text-white font-semibold px-4 py-2 rounded-full flex items-center text-sm">
+                        <i class="fab fa-whatsapp mr-1"></i>Pesan
+                    </a>
+                    <button class="mobile-menu-button p-2 text-gray-700 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden lg:hidden bg-white border-t border-gray-100 mobile-menu">
+            <div class="px-4 py-3 space-y-1">
+                <a href="#netflix" class="nav-link-mobile block px-3 py-3 rounded-lg text-gray-700 hover:bg-purple-50 hover:text-purple-600 font-medium transition flex items-center">
+                    <i class="fas fa-tv mr-3 text-red-500 w-5 text-center"></i>
+                    Netflix Premium
+                </a>
+                <a href="#capcut" class="nav-link-mobile block px-3 py-3 rounded-lg text-gray-700 hover:bg-purple-50 hover:text-purple-600 font-medium transition flex items-center">
+                    <i class="fas fa-video mr-3 text-purple-500 w-5 text-center"></i>
+                    CapCut Pro
+                </a>
+                <a href="#features" class="nav-link-mobile block px-3 py-3 rounded-lg text-gray-700 hover:bg-purple-50 hover:text-purple-600 font-medium transition flex items-center">
+                    <i class="fas fa-star mr-3 text-yellow-500 w-5 text-center"></i>
+                    Fitur
+                </a>
+                <a href="#pricing" class="nav-link-mobile block px-3 py-3 rounded-lg text-gray-700 hover:bg-purple-50 hover:text-purple-600 font-medium transition flex items-center">
+                    <i class="fas fa-tag mr-3 text-green-500 w-5 text-center"></i>
+                    Harga
+                </a>
+                <a href="#testimonials" class="nav-link-mobile block px-3 py-3 rounded-lg text-gray-700 hover:bg-purple-50 hover:text-purple-600 font-medium transition flex items-center">
+                    <i class="fas fa-comment-alt mr-3 text-blue-500 w-5 text-center"></i>
+                    Testimoni
+                </a>
+                <a href="#faq" class="nav-link-mobile block px-3 py-3 rounded-lg text-gray-700 hover:bg-purple-50 hover:text-purple-600 font-medium transition flex items-center">
+                    <i class="fas fa-question-circle mr-3 text-indigo-500 w-5 text-center"></i>
+                    FAQ
+                </a>
+                
+                <div class="pt-2 mt-2 border-t border-gray-100">
+                    <a href="https://wa.me/6281906348152" class="block w-full cta-button text-white font-semibold px-4 py-3 rounded-lg text-center mt-2">
+                        <i class="fab fa-whatsapp mr-2"></i>Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Netflix Hero Section -->
+    <section id="netflix" class="netflix-gradient text-white py-20 md:py-32">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Paket Netflix Premium</h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6">Hanya Rp25.000/bulan</h2>
+                    <p class="text-xl mb-8">Nikmati Netflix Premium 4K dengan harga terjangkau!</p>
+                    
+                    <div class="netflix-device-rule bg-white bg-opacity-10 p-4 rounded-lg mb-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-tv text-yellow-300 mt-1 mr-3"></i>
+                            <p><strong>Fitur:</strong> 4K UHD • 4 Screen • No Buffering • Garansi 30 hari</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/6281906348152?text=Saya%20mau%20beli%20Paket%20Netflix%20Premium" class="bg-white text-red-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 inline-flex items-center">
+                        <i class="fab fa-whatsapp mr-2 text-xl"></i> Pesan Netflix Sekarang!
+                    </a>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <img src="https://via.placeholder.com/600x400/e50914/b81d24?text=Netflix+Premium+4K" alt="Netflix Premium" class="rounded-lg shadow-2xl mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Netflix Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Pilihan Paket Netflix</h2>
+                <p class="text-xl text-gray-600">Pilih paket sesuai kebutuhan Anda</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Paket 1 Bulan -->
+                <div class="bg-white rounded-xl shadow-lg pricing-card overflow-hidden" data-aos="fade-up">
+                    <div class="bg-red-600 text-white py-6 text-center">
+                        <h3 class="text-2xl font-bold">1 BULAN</h3>
+                        <div class="text-4xl font-bold mt-2">Rp25.000</div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Kualitas 4K UHD</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>4 Screen Simultaneous</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Garansi 30 Hari</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Akun Private/Sharing</span>
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/6281906348152?text=Saya%20mau%20beli%20Paket%20Netflix%201%20Bulan" 
+                           class="block w-full bg-red-600 text-white text-center font-bold py-3 rounded-lg hover:bg-red-700 transition">
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Paket 3 Bulan -->
+                <div class="bg-white rounded-xl shadow-lg pricing-card overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-red-700 text-white py-6 text-center">
+                        <h3 class="text-2xl font-bold">3 BULAN</h3>
+                        <div class="text-4xl font-bold mt-2">Rp65.000</div>
+                        <div class="text-sm mt-1">Hemat Rp10.000</div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Kualitas 4K UHD</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>4 Screen Simultaneous</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Garansi 90 Hari</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Akun Private/Sharing</span>
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/6281906348152?text=Saya%20mau%20beli%20Paket%20Netflix%203%20Bulan" 
+                           class="block w-full bg-red-700 text-white text-center font-bold py-3 rounded-lg hover:bg-red-800 transition">
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Paket 6 Bulan -->
+                <div class="bg-white rounded-xl shadow-lg pricing-card overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-red-800 text-white py-6 text-center">
+                        <h3 class="text-2xl font-bold">6 BULAN</h3>
+                        <div class="text-4xl font-bold mt-2">Rp120.000</div>
+                        <div class="text-sm mt-1">Hemat Rp30.000</div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Kualitas 4K UHD</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>4 Screen Simultaneous</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Garansi 180 Hari</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-3"></i>
+                                <span>Akun Private/Sharing</span>
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/6281906348152?text=Saya%20mau%20beli%20Paket%20Netflix%206%20Bulan" 
+                           class="block w-full bg-red-800 text-white text-center font-bold py-3 rounded-lg hover:bg-red-900 transition">
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CapCut Hero Section -->
+    <section id="capcut" class="hero-gradient text-white py-20 md:py-32">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Paket 1 Bulan CapCut Pro</h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6">Hanya Rp50.000</h2>
+                    <p class="text-xl mb-8">Nikmati semua fitur premium CapCut tanpa batas selama 1 bulan penuh!</p>
+                    
+                    <div class="device-rule bg-white bg-opacity-10 p-4 rounded-lg mb-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-exclamation-circle text-yellow-300 mt-1 mr-3"></i>
+                            <p><strong>Perhatian:</strong> Setiap akun hanya boleh digunakan di <strong>1 device</strong>. Pelanggaran akan menyebabkan akun terblokir tanpa refund!</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/6287769727615" class="bg-white text-purple-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 inline-flex items-center">
+                        <i class="fab fa-whatsapp mr-2 text-xl"></i> Pesan Sekarang!
+                    </a>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <img src="https://via.placeholder.com/600x400/6e8efb/a777e3?text=CapCut+Pro+1+Bulan" alt="CapCut Pro 1 Bulan" class="rounded-lg shadow-2xl mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Description Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Deskripsi Paket 1 Bulan</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Akses penuh CapCut Pro selama 30 hari dengan harga terjangkau</p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-xl p-8 shadow-md max-w-4xl mx-auto" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 mb-6 md:mb-0 md:pr-6">
+                        <h3 class="text-2xl font-semibold mb-4 text-purple-600">Apa yang Anda Dapatkan?</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Akun CapCut Pro premium valid 30 hari</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Akses ke semua fitur Pro tanpa batas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Library musik premium tanpa copyright</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                <span>Efek eksklusif dan template Pro</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2 md:pl-6">
+                        <h3 class="text-2xl font-semibold mb-4 text-purple-600">Ketentuan Paket</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>1 akun = 1 device (tidak bisa sharing)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>Masa aktif 30 hari sejak aktivasi</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>Garansi 7 hari jika ada masalah</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-500 mt-1 mr-3"></i>
+                                <span>Pembayaran via transfer bank/ewallet</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <a href="https://wa.me/6281906348152?text=Saya%20mau%20beli%20Paket%201%20Bulan%20CapCut%20Pro" class="bg-purple-600 text-white font-bold py-3 px-8 rounded-full hover:bg-purple-700 transition duration-300 inline-flex items-center mx-auto">
+                        <i class="fab fa-whatsapp mr-2 text-xl"></i> Pesan Sekarang - Rp50.000
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Fitur Premium</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Semua fitur premium terbuka untuk Anda</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Netflix Features -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="netflix-feature-icon w-16 h-16 rounded-full flex items-center justify-center text-white mb-6 mx-auto">
+                        <i class="fas fa-tv text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-center">4K Ultra HD</h3>
+                    <p class="text-gray-600 text-center">Nikmati konten Netflix dengan kualitas terbaik hingga 4K UHD untuk pengalaman menonton yang memukau.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="netflix-feature-icon w-16 h-16 rounded-full flex items-center justify-center text-white mb-6 mx-auto">
+                        <i class="fas fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-center">4 Screen Simultaneous</h3>
+                    <p class="text-gray-600 text-center">Tonton di hingga 4 perangkat berbeda secara bersamaan. Cocok untuk keluarga atau teman sekamar.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="netflix-feature-icon w-16 h-16 rounded-full flex items-center justify-center text-white mb-6 mx-auto">
+                        <i class="fas fa-download text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-center">Download Offline</h3>
+                    <p class="text-gray-600 text-center">Download film dan series favorit untuk ditonton offline kapan saja, di mana saja.</p>
+                </div>
+                
+                <!-- CapCut Features -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center text-white mb-6 mx-auto">
+                        <i class="fas fa-music text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-center">Royalty-Free Music</h3>
+                    <p class="text-gray-600 text-center">Akses ke ribuan lagu dan sound effect premium tanpa khawatir copyright strike di platform manapun.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center text-white mb-6 mx-auto">
+                        <i class="fas fa-star text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-center">Efek Pro Eksklusif</h3>
+                    <p class="text-gray-600 text-center">Ratusan efek video, transisi keren, dan template eksklusif yang hanya tersedia untuk pengguna Pro.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon w-16 h-16 rounded-full flex items-center justify-center text-white mb-6 mx-auto">
+                        <i class="fas fa-water text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-center">No Watermark</h3>
+                    <p class="text-gray-600 text-center">Export video tanpa watermark CapCut untuk konten yang lebih profesional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Manfaat Berlangganan</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Apa keuntungan yang Anda dapatkan?</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="flex" data-aos="fade-right">
+                    <div class="mr-6">
+                        <div class="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center text-red-600">
+                            <i class="fas fa-wallet text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3">Hemat Biaya</h3>
+                        <p class="text-gray-600">Dengan harga yang terjangkau, Anda bisa menikmati semua fitur premium Netflix dan CapCut jauh lebih murah dibanding berlangganan resmi.</p>
+                    </div>
+                </div>
+                
+                <div class="flex" data-aos="fade-left">
+                    <div class="mr-6">
+                        <div class="bg-purple-100 w-14 h-14 rounded-full flex items-center justify-center text-purple-600">
+                            <i class="fas fa-bolt text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3">Cepat & Mudah</h3>
+                        <p class="text-gray-600">Proses aktivasi instan setelah pembayaran. Anda bisa langsung menggunakan akun premium tanpa proses rumit.</p>
+                    </div>
+                </div>
+                
+                <div class="flex" data-aos="fade-right">
+                    <div class="mr-6">
+                        <div class="bg-red-100 w-14 h-14 rounded-full flex items-center justify-center text-red-600">
+                            <i class="fas fa-lock text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3">Aman & Legal</h3>
+                        <p class="text-gray-600">Akun premium resmi, bukan mod apk atau crack yang berisiko malware. Garansi aktif sesuai periode yang dipilih.</p>
+                    </div>
+                </div>
+                
+                <div class="flex" data-aos="fade-left">
+                    <div class="mr-6">
+                        <div class="bg-purple-100 w-14 h-14 rounded-full flex items-center justify-center text-purple-600">
+                            <i class="fas fa-user-check text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3">Cocok untuk Pemula</h3>
+                        <p class="text-gray-600">Uji semua fitur premium sebelum memutuskan untuk berlangganan jangka panjang. Solusi sempurna untuk pemula.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center" data-aos="fade-up">
+                <a href="https://wa.me/6281906348152?text=Halo,%20saya%20mau%20tanya%20tentang%20paket%20Netflix%20dan%20CapCut" class="bg-purple-600 text-white font-bold py-3 px-8 rounded-full hover:bg-purple-700 transition duration-300 inline-flex items-center mx-auto">
+                    <i class="fab fa-whatsapp mr-2 text-xl"></i> Tanya-tanya Dulu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How To Use Section -->
+    <section id="how-to-use" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Cara Menggunakan Akun</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Langkah-langkah setelah pembelian</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Netflix Instructions -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up">
+                    <div class="bg-red-600 text-white p-6">
+                        <h3 class="text-2xl font-bold">Instruksi Netflix</h3>
+                    </div>
+                    <div class="p-6">
+                        <ol class="space-y-6">
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-red-100 text-red-600 font-bold mr-4">1</span>
+                                <span>Tunggu detail akun dikirim via WhatsApp setelah pembayaran</span>
+                            </li>
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-red-100 text-red-600 font-bold mr-4">2</span>
+                                <span>Login ke Netflix menggunakan akun yang diberikan</span>
+                            </li>
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-red-100 text-red-600 font-bold mr-4">3</span>
+                                <span>Nikmati Netflix Premium di hingga 4 device</span>
+                            </li>
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-red-100 text-red-600 font-bold mr-4">4</span>
+                                <span>Jangan ganti password atau email akun</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <!-- CapCut Instructions -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-purple-600 text-white p-6">
+                        <h3 class="text-2xl font-bold">Instruksi CapCut</h3>
+                    </div>
+                    <div class="p-6">
+                        <ol class="space-y-6">
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-600 font-bold mr-4">1</span>
+                                <span>Logout dari akun CapCut lama (jika ada)</span>
+                            </li>
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-600 font-bold mr-4">2</span>
+                                <span>Login menggunakan akun Pro yang kami berikan</span>
+                            </li>
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-600 font-bold mr-4">3</span>
+                                <span>Nikmati semua fitur premium CapCut Pro</span>
+                            </li>
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-purple-100 text-purple-600 font-bold mr-4">4</span>
+                                <span>Jangan logout atau ganti device selama masa aktif</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Apa Kata Mereka?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Testimoni dari pelanggan HanzMarket</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4">A</div>
+                        <div>
+                            <h4 class="font-semibold">Andi Pratama</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Akun CapCut Pro nya legit banget! Langsung bisa dipakai setelah dikirim. Thanks HanzMarket!"</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-bold mr-4">D</div>
+                        <div>
+                            <h4 class="font-semibold">Diana Sari</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Netflix 4K nya lancar banget! Udah 3 bulan pake ga ada kendala. Recommended banget!"</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold mr-4">R</div>
+                        <div>
+                            <h4 class="font-semibold">Rudi Hartono</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Awalnya ragu tapi ternyata akunnya benar-benar premium. Adminnya juga fast respon."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Pertanyaan Umum</h2>
+                <p class="text-xl text-gray-600">Temukan jawaban untuk pertanyaan yang sering diajukan</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="border border-gray-200 rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <button class="faq-question w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                        <h3 class="text-lg font-semibold">Apakah Netflix bisa digunakan bersamaan di beberapa device?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 pt-0">
+                        <p class="text-gray-600">Ya, paket Netflix Premium mendukung hingga 4 screen simultaneous. Bisa ditonton di 4 device berbeda secara bersamaan.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <button class="faq-question w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                        <h3 class="text-lg font-semibold">Apakah benar 1 akun CapCut hanya untuk 1 device?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 pt-0">
+                        <p class="text-gray-600">Ya, benar. Setiap akun CapCut Pro yang kami jual hanya boleh digunakan pada 1 device saja. Jika akun digunakan di lebih dari 1 device secara bersamaan, sistem akan mendeteksi dan akun bisa terblokir otomatis.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <button class="faq-question w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                        <h3 class="text-lg font-semibold">Berapa lama proses pengiriman akun setelah pembayaran?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 pt-0">
+                        <p class="text-gray-600">Biasanya kami mengirimkan detail akun dalam waktu 5-15 menit setelah pembayaran dikonfirmasi. Jika lebih dari 1 jam belum menerima, silakan hubungi kami via WhatsApp.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                    <button class="faq-question w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                        <h3 class="text-lg font-semibold">Apakah ada garansi untuk paket ini?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 pt-0">
+                        <p class="text-gray-600">Kami memberikan garansi sesuai periode paket yang dipilih. Jika ada masalah dengan akun dalam periode tersebut (seperti tidak bisa login tanpa sebab jelas), kami akan mengganti dengan akun baru.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-xl overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+                    <button class="faq-question w-full flex justify-between items-center p-6 text-left focus:outline-none">
+                        <h3 class="text-lg font-semibold">Metode pembayaran apa saja yang tersedia?</h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 pt-0">
+                        <p class="text-gray-600">Kami menerima transfer bank (BCA, BRI, Mandiri, BNI), e-wallet (DANA, OVO, Gopay, ShopeePay), dan QRIS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-red-600 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Siap Nikmati Premium Experience?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Dapatkan semua fitur premium Netflix dan CapCut dengan harga terjangkau!</p>
+            <a href="https://wa.me/6281906348152" class="bg-white text-purple-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300 inline-flex items-center text-lg">
+                <i class="fab fa-whatsapp mr-2 text-xl"></i> Hubungi Kami via WhatsApp (081906348152)
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">HanzMarket</h3>
+                    <p class="text-gray-400">Penyedia akun premium Netflix dan CapCut Pro dengan harga terjangkau.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Produk</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#netflix" class="text-gray-400 hover:text-white transition">Netflix Premium</a></li>
+                        <li><a href="#capcut" class="text-gray-400 hover:text-white transition">CapCut Pro</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kontak</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            <a href="https://wa.me/6281906348152" class="text-gray-400 hover:text-white transition">081906348152</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <a href="mailto:info@hanzmarket.com" class="text-gray-400 hover:text-white transition">info@hanzmarket.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400">
+                <p>© 2023 HanzMarket.com. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('.nav-link-mobile');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // FAQ accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Toggle answer
+                answer.classList.toggle('hidden');
+                
+                // Rotate icon
+                icon.classList.toggle('transform');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Add active class to current page link (for demo purposes)
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
